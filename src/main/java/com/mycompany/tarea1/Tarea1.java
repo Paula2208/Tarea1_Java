@@ -45,7 +45,7 @@ public class Tarea1 {
 //        exercise11(input);
 //        exercise13(input);
 //        exercise15(input);
-        exercise17(input);
+//        exercise17(input);
 //        exercise19(input);
 //        exercise21(input);
 //        exercise23(input);
@@ -58,7 +58,7 @@ public class Tarea1 {
 //        System.out.println();
 //        
 //        exercise24(input);
-//        exercise26(input);
+        exercise26(input);
 //        
 //        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
 //        System.out.println();
@@ -458,61 +458,201 @@ public class Tarea1 {
         int N = input.nextInt();
         
         int[] nums = new int[N];
+        boolean creciente = true;
+        boolean decreciente = true;
+        boolean igual = true;
         
         System.out.println("Ingrese "+ N + " números separados por espacio: ");
         for (int i = 0; i < N; i++) {
             nums[i] = input.nextInt();
             
-            //@todo
+            if(i != 0){
+                if(nums[i] != nums[i-1]) igual = false;
+                if(nums[i] > nums[i-1]) decreciente = false;
+                if(nums[i] < nums[i-1]) creciente = false;
+            }
         }
+        
+        if(igual) System.out.println("El arreglo es de números iguales");
+        if(creciente && !igual) System.out.println("El arreglo es creciente");
+        if(decreciente && !igual) System.out.println("El arreglo es decreciente");
+        if(!igual && !creciente && !decreciente) System.out.println("El arreglo está desordenado");
 
-       
         System.out.println();
     }
     
     public static void exercise19(Scanner input) {
         /*
-            
+            Pedir un número N al usuario. Leer N números, guardarlos
+            en un arreglo de tamaño N. Imprimir dos arreglos, uno con 
+            los números pares del arreglo original y otro con los números
+            impares.
          */
         System.out.println("Ejercicio 19");
+        System.out.println("Ingrese la cantidad de números (N): ");
+        int N = input.nextInt();
+        
+        int[] nums = new int[N];
+        int[] pares = new int[N];
+        int[] impares = new int[N];
+        int paresCount = 0;
+        int imparesCount = 0;
+        
+        System.out.println("Ingrese "+ N + " números separados por espacio: ");
+        for (int i = 0; i < N; i++) {
+            nums[i] = input.nextInt();
+            
+            if(i % 2 == 0){
+                pares[paresCount] = nums[i];
+                paresCount++;
 
+            }
+            else{
+                impares[imparesCount] = nums[i];
+                imparesCount++;
+            }
+        }
+
+        System.out.print("En el arreglo [");
+        for (int i = 0; i < N; i++) {
+            if(i == N-1){
+                System.out.print(nums[i]);
+                continue;
+            }
+            System.out.print(nums[i] + " ,");
+        }
+        System.out.print("]");
+        
+        System.out.println();
+        System.out.print("Existen los números pares: [");
+        for (int i = 0; i < paresCount; i++) {
+            if(i == paresCount-1){
+                System.out.print(pares[i]);
+                continue;
+            }
+            System.out.print(pares[i] + " ,");
+        }
+        System.out.print("]");
+        
+        System.out.println();
+        System.out.print("Existen los números impares: [");
+        for (int i = 0; i < imparesCount; i++) {
+            if(i == imparesCount-1){
+                System.out.print(impares[i]);
+                continue;
+            }
+            System.out.print(impares[i] + " ,");
+        }
+        System.out.print("]");
        
         System.out.println();
     }
     
     public static void exercise21(Scanner input) {
         /*
-            
+            Llenar las entradas de una matriz de tamaño 3x3,
+            imprimir la matriz original y su transpuesta.
          */
         System.out.println("Ejercicio 21");
+        int[][] mat = new int[3][3];
+        int[][] trans = new int[3][3];
+        
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.println("Ingrese el elemento en la posición [" + i + "][" + j + "]: ");
+                mat[i][j] = input.nextInt();
+                trans[j][i] = mat[i][j];
+            }
+        }
 
+        System.out.println("Matriz original:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+        System.out.println("Matriz transpuesta:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(trans[i][j] + " ");
+            }
+            System.out.println();
+        }
        
         System.out.println();
     }
     
     public static void exercise23(Scanner input) {
         /*
-            
+            Crear y llenar dos matrices, una de tamaño 3x3 donde sus
+            elementos son números y otra de tamaño 4x4 donde sus
+            elementos son letras. Sumar los elementos que se encuentran
+            en la diagonal de la matriz de números e imprimir el resultado.
+            Imprimir los elementos en la diagonal de la matriz de letras.
          */
         System.out.println("Ejercicio 23");
-
+        int[][] nums = new int[3][3];
+        char[][] lets = new char[4][4];
+        int sumDiag = 0;
+        String letsDiag = "";
+        
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.println("Ingrese el número en la posición [" + i + "][" + j + "]: ");
+                nums[i][j] = input.nextInt();
+                
+                if(i == j) sumDiag = sumDiag + nums[i][j];
+            }
+        }
+        
+        for (int i = 0; i < 4 ; i++) {
+            if( i == 0 ){
+                System.out.println("Ingrese la primera fila de letras. Ejemplo (abcd)");
+                input.nextLine();
+            }
+            else{
+                System.out.println("Ingrese la siguiente fila de letras. Ejemplo (abcd)");
+            }
+            
+            String letsLine = input.nextLine();
+            for (int j = 0; j < 4; j++) {
+                lets[i][j] = letsLine.charAt(j);
+                
+                if(i == j) letsDiag = letsDiag + " " +lets[i][j];
+            }
+        }
+        
+        System.out.println();
+        
+        System.out.println("La suma de la diagonal de la matriz de números es: " + sumDiag);
+        System.out.println("Los elementos de la diagonal de la matriz de letras son: " + letsDiag);
        
         System.out.println();
     }
     
     public static void exercise24(Scanner input) {
         /*
-            
+            Clase Avión.
          */
         System.out.println("Ejercicio 24");
-
+        Avion a = new Avion("Boeing", 3);
+        Avion b = new Avion("Airbus", 2);
+        
+        a.imprimirFabricante();
+        b.imprimirFabricante();
+        
+        a.cambiarFabricante(b);
+        
+        b.imprimirFabricante();
        
         System.out.println();
     }
     
     public static void exercise26(Scanner input) {
         /*
-            
+            Restaurante y pedidos.
          */
         System.out.println("Ejercicio 26");
 
