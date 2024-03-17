@@ -12,63 +12,113 @@ import java.util.Scanner;
 public class Tarea1 {
 
     public static void main(String[] args) {
-        System.out.println("¡Hola! Esta es la solución de algunos puntos de las tareas 1, 2 y 4.");
+        System.out.println("¡Hola! Esta es la solución de algunos puntos de las tareas de POO.");
+        System.out.println("Por: Wilson David Gil Forero");
         System.out.println();
-        
-        Scanner input = new Scanner(System.in);
-        
-        // Puedes seleccionar varias líneas a la vez
-        // Luego, con ctrl +shift +c puedes comentar las líneas seleccionadas
-        // El mismo comando para descomentarlas
-        
-//        System.out.println("-------------------------------------------------------------------* Solución Tarea 1 *-------------------------------------------------------------------");
-//        System.out.println();
-//        exercise1(input);
-//        exercise2(input);
-//        exercise3(input);
-//        exercise4();
-//        exercise5(input);
-//        exercise6(input);
-//        exercise7(input);
-//        exercise8(input);
-//        exercise9(input);
-//        exercise10(input);
-//        
-//        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
-//        System.out.println();
-//        System.out.println();
-//        
-//        System.out.println("-------------------------------------------------------------------* Solución Tarea 2 *-------------------------------------------------------------------");
-//        System.out.println();
-        
-//        exercise9B(input);
-//        exercise11(input);
-//        exercise13(input);
-//        exercise15(input);
-//        exercise17(input);
-//        exercise19(input);
-//        exercise21(input);
-//        exercise23(input);
-//        
-//        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
-//        System.out.println();
-//        System.out.println();
-//        
-//        System.out.println("-------------------------------------------------------------------* Solución Tarea 3 *-------------------------------------------------------------------");
-//        System.out.println();
-//        
-//        exercise24(input);
-        exercise26(input);
-//        
-//        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
-//        System.out.println();
-        
-        input.close();
+        boolean active = true;
+
+        try (Scanner input = new Scanner(System.in)) {
+            while (active) {
+                System.out.println("Ingresa el número de tarea que deseas revisar:");
+                System.out.println("1. Ejercicios iniciales.");
+                System.out.println("2. Ejercicios con bucles.");
+                System.out.println("3. Ejercicios con listas.");
+                System.out.println("4. Ejercicios de los cuatro pilares de POO.");
+                System.out.println("0. Todas las tareas.");
+                System.out.println("1000. Salir");
+
+                int tarea = input.nextInt();
+
+                switch (tarea) {
+                    case 1 ->
+                        displayTarea1(input);
+
+                    case 2 ->
+                        displayTarea2(input);
+
+                    case 3 ->
+                        displayTarea3(input);
+
+                    case 4 ->
+                        displayTarea4(input);
+                    case 1000 ->
+                        active = false;
+                    default -> {
+                        displayTarea1(input);
+                        displayTarea2(input);
+                        displayTarea3(input);
+                        displayTarea4(input);
+                    }
+                }
+            }
+        }
+
         System.out.println();
-        System.out.println("¡Adiós! <3");
+        System.out.println("¡Adiós!");
         System.out.println();
     }
 
+    // Tareas ------------------------------------------------------------------
+    public static void displayTarea1(Scanner input) {
+        System.out.println("-------------------------------------------------------------------* Solución Tarea 1 *-------------------------------------------------------------------");
+        System.out.println();
+        exercise1(input);
+        exercise2(input);
+        exercise3(input);
+        exercise4();
+        exercise5(input);
+        exercise6(input);
+        exercise7(input);
+        exercise8(input);
+        exercise9(input);
+        exercise10(input);
+
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println();
+    }
+
+    public static void displayTarea2(Scanner input) {
+        System.out.println("-------------------------------------------------------------------* Solución Tarea 2 *-------------------------------------------------------------------");
+        System.out.println();
+
+        exercise9B(input);
+        exercise11(input);
+        exercise13(input);
+        exercise15(input);
+        exercise17(input);
+        exercise19(input);
+        exercise21(input);
+        exercise23(input);
+
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println();
+    }
+
+    public static void displayTarea3(Scanner input) {
+        System.out.println("-------------------------------------------------------------------* Solución Tarea 3 *-------------------------------------------------------------------");
+        System.out.println();
+
+        exercise24(input);
+        exercise26(input);
+
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println();
+    }
+
+    public static void displayTarea4(Scanner input) {
+        System.out.println("-------------------------------------------------------------------* Solución Tarea 4 *-------------------------------------------------------------------");
+        System.out.println();
+
+        exercise27(input);
+
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println();
+    }
+
+    // Ejercicios---------------------------------------------------------------
     public static void exercise1(Scanner input) {
         /*
             Hacer un programa en Java que le
@@ -321,7 +371,7 @@ public class Tarea1 {
         System.out.println("El valor total de la compra es: $" + total);
         System.out.println();
     }
-    
+
     public static void exercise9B(Scanner input) {
         /*
             Pedir un número N al usuario e indicarle
@@ -329,29 +379,27 @@ public class Tarea1 {
          */
         System.out.println("Ejercicio 9B"); // 9 en el listado del excel jeje
         System.out.println("A continuación se te pedirán 8 números, luego de cada entrada se dirá si es par o impar");
-        
-        for(int i = 0; i < 8; i++){
-            if(i == 0){
+
+        for (int i = 0; i < 8; i++) {
+            if (i == 0) {
                 System.out.println("Ingresa un número");
-            }
-            else{
+            } else {
                 System.out.println("Ingresa otro número");
             }
-            
+
             int a = input.nextInt();
-            
-            if(a%2 == 0){
-                System.out.println(a+" es un número par");
-            }
-            else{
-                System.out.println(a+" es un número impar");
+
+            if (a % 2 == 0) {
+                System.out.println(a + " es un número par");
+            } else {
+                System.out.println(a + " es un número impar");
             }
             System.out.println("");
         }
-       
+
         System.out.println();
     }
-    
+
     public static void exercise11(Scanner input) {
         /*
             Pedir un número N al usuario e impirmit la multiplicación
@@ -362,15 +410,15 @@ public class Tarea1 {
         int a = input.nextInt();
 
         long mult = 1;
-        for(int i = 2; i <= a; i += 2) {
+        for (int i = 2; i <= a; i += 2) {
             mult *= i;
         }
-        
+
         System.out.println("La multiplicación de todos los números pares menores o iguales a " + a + " es: " + mult);
-       
+
         System.out.println();
     }
-    
+
     public static void exercise13(Scanner input) {
         /*
             Pedir 9 números al usuario, e imprimir
@@ -379,32 +427,31 @@ public class Tarea1 {
          */
         System.out.println("Ejercicio 13");
         System.out.println("Digita 9 números separados por espacio");
-        
+
         String mult3 = "";
         String pares = "";
         int paresCount = 0;
         int mult3Count = 0;
-        
-        for(int i = 0; i < 9; i++){
+
+        for (int i = 0; i < 9; i++) {
             int a = input.nextInt();
-            
-            if(a%2 == 0){
+
+            if (a % 2 == 0) {
                 pares = pares + " " + a;
                 paresCount++;
-            }
-            else if (a%3 == 0){
+            } else if (a % 3 == 0) {
                 mult3 = mult3 + " " + a;
                 mult3Count++;
             }
         }
-        
+
         System.out.println();
-        
-        System.out.println("Hay "+ mult3Count + " números múltiplos de 3:" + mult3);
-        System.out.println("Hay "+ paresCount + " números pares:" + pares);
+
+        System.out.println("Hay " + mult3Count + " números múltiplos de 3:" + mult3);
+        System.out.println("Hay " + paresCount + " números pares:" + pares);
         System.out.println();
     }
-    
+
     public static void exercise15(Scanner input) {
         /*
             Pedir dos números al usuario: N y D.
@@ -415,37 +462,36 @@ public class Tarea1 {
         System.out.println("Ejercicio 15");
         System.out.println("Ingrese la cantidad de números (N): ");
         int N = input.nextInt();
-        
+
         System.out.println("Ingrese la cantidad de posiciones a la derecha a desplazar (D): ");
         int D = input.nextInt();
-        
+
         int[] original = new int[N];
         int[] desplazado = new int[N];
-        
-        System.out.println("Ingrese "+ N + " números separados por espacio: ");
+
+        System.out.println("Ingrese " + N + " números separados por espacio: ");
         for (int i = 0; i < N; i++) {
             original[i] = input.nextInt();
         }
-        
+
         for (int i = 0; i < N; i++) {
             desplazado[(i + D) % N] = original[i];
         }
-        
+
         System.out.println();
         System.out.print("El arreglo luego del desplazamiento es: [");
         for (int i = 0; i < N; i++) {
-            if(i == N-1) {
+            if (i == N - 1) {
                 System.out.print(desplazado[i]);
-            }
-            else{
+            } else {
                 System.out.print(desplazado[i] + ", ");
             }
         }
         System.out.print("]");
-       
+
         System.out.println();
     }
-    
+
     public static void exercise17(Scanner input) {
         /*
             Pedir un arreglo N al usuario. Crear un arreglo de tamaño N e
@@ -456,31 +502,45 @@ public class Tarea1 {
         System.out.println("Ejercicio 17");
         System.out.println("Ingrese la cantidad de números (N): ");
         int N = input.nextInt();
-        
+
         int[] nums = new int[N];
         boolean creciente = true;
         boolean decreciente = true;
         boolean igual = true;
-        
-        System.out.println("Ingrese "+ N + " números separados por espacio: ");
+
+        System.out.println("Ingrese " + N + " números separados por espacio: ");
         for (int i = 0; i < N; i++) {
             nums[i] = input.nextInt();
-            
-            if(i != 0){
-                if(nums[i] != nums[i-1]) igual = false;
-                if(nums[i] > nums[i-1]) decreciente = false;
-                if(nums[i] < nums[i-1]) creciente = false;
+
+            if (i != 0) {
+                if (nums[i] != nums[i - 1]) {
+                    igual = false;
+                }
+                if (nums[i] > nums[i - 1]) {
+                    decreciente = false;
+                }
+                if (nums[i] < nums[i - 1]) {
+                    creciente = false;
+                }
             }
         }
-        
-        if(igual) System.out.println("El arreglo es de números iguales");
-        if(creciente && !igual) System.out.println("El arreglo es creciente");
-        if(decreciente && !igual) System.out.println("El arreglo es decreciente");
-        if(!igual && !creciente && !decreciente) System.out.println("El arreglo está desordenado");
+
+        if (igual) {
+            System.out.println("El arreglo es de números iguales");
+        }
+        if (creciente && !igual) {
+            System.out.println("El arreglo es creciente");
+        }
+        if (decreciente && !igual) {
+            System.out.println("El arreglo es decreciente");
+        }
+        if (!igual && !creciente && !decreciente) {
+            System.out.println("El arreglo está desordenado");
+        }
 
         System.out.println();
     }
-    
+
     public static void exercise19(Scanner input) {
         /*
             Pedir un número N al usuario. Leer N números, guardarlos
@@ -491,23 +551,22 @@ public class Tarea1 {
         System.out.println("Ejercicio 19");
         System.out.println("Ingrese la cantidad de números (N): ");
         int N = input.nextInt();
-        
+
         int[] nums = new int[N];
         int[] pares = new int[N];
         int[] impares = new int[N];
         int paresCount = 0;
         int imparesCount = 0;
-        
-        System.out.println("Ingrese "+ N + " números separados por espacio: ");
+
+        System.out.println("Ingrese " + N + " números separados por espacio: ");
         for (int i = 0; i < N; i++) {
             nums[i] = input.nextInt();
-            
-            if(i % 2 == 0){
+
+            if (i % 2 == 0) {
                 pares[paresCount] = nums[i];
                 paresCount++;
 
-            }
-            else{
+            } else {
                 impares[imparesCount] = nums[i];
                 imparesCount++;
             }
@@ -515,39 +574,39 @@ public class Tarea1 {
 
         System.out.print("En el arreglo [");
         for (int i = 0; i < N; i++) {
-            if(i == N-1){
+            if (i == N - 1) {
                 System.out.print(nums[i]);
                 continue;
             }
             System.out.print(nums[i] + " ,");
         }
         System.out.print("]");
-        
+
         System.out.println();
         System.out.print("Existen los números pares: [");
         for (int i = 0; i < paresCount; i++) {
-            if(i == paresCount-1){
+            if (i == paresCount - 1) {
                 System.out.print(pares[i]);
                 continue;
             }
             System.out.print(pares[i] + " ,");
         }
         System.out.print("]");
-        
+
         System.out.println();
         System.out.print("Existen los números impares: [");
         for (int i = 0; i < imparesCount; i++) {
-            if(i == imparesCount-1){
+            if (i == imparesCount - 1) {
                 System.out.print(impares[i]);
                 continue;
             }
             System.out.print(impares[i] + " ,");
         }
         System.out.print("]");
-       
+
         System.out.println();
     }
-    
+
     public static void exercise21(Scanner input) {
         /*
             Llenar las entradas de una matriz de tamaño 3x3,
@@ -556,7 +615,7 @@ public class Tarea1 {
         System.out.println("Ejercicio 21");
         int[][] mat = new int[3][3];
         int[][] trans = new int[3][3];
-        
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.println("Ingrese el elemento en la posición [" + i + "][" + j + "]: ");
@@ -572,7 +631,7 @@ public class Tarea1 {
             }
             System.out.println();
         }
-        
+
         System.out.println("Matriz transpuesta:");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -580,10 +639,10 @@ public class Tarea1 {
             }
             System.out.println();
         }
-       
+
         System.out.println();
     }
-    
+
     public static void exercise23(Scanner input) {
         /*
             Crear y llenar dos matrices, una de tamaño 3x3 donde sus
@@ -597,41 +656,44 @@ public class Tarea1 {
         char[][] lets = new char[4][4];
         int sumDiag = 0;
         String letsDiag = "";
-        
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.println("Ingrese el número en la posición [" + i + "][" + j + "]: ");
                 nums[i][j] = input.nextInt();
-                
-                if(i == j) sumDiag = sumDiag + nums[i][j];
+
+                if (i == j) {
+                    sumDiag = sumDiag + nums[i][j];
+                }
             }
         }
-        
-        for (int i = 0; i < 4 ; i++) {
-            if( i == 0 ){
+
+        for (int i = 0; i < 4; i++) {
+            if (i == 0) {
                 System.out.println("Ingrese la primera fila de letras. Ejemplo (abcd)");
                 input.nextLine();
-            }
-            else{
+            } else {
                 System.out.println("Ingrese la siguiente fila de letras. Ejemplo (abcd)");
             }
-            
+
             String letsLine = input.nextLine();
             for (int j = 0; j < 4; j++) {
                 lets[i][j] = letsLine.charAt(j);
-                
-                if(i == j) letsDiag = letsDiag + " " +lets[i][j];
+
+                if (i == j) {
+                    letsDiag = letsDiag + " " + lets[i][j];
+                }
             }
         }
-        
+
         System.out.println();
-        
+
         System.out.println("La suma de la diagonal de la matriz de números es: " + sumDiag);
         System.out.println("Los elementos de la diagonal de la matriz de letras son: " + letsDiag);
-       
+
         System.out.println();
     }
-    
+
     public static void exercise24(Scanner input) {
         /*
             Clase Avión.
@@ -639,24 +701,58 @@ public class Tarea1 {
         System.out.println("Ejercicio 24");
         Avion a = new Avion("Boeing", 3);
         Avion b = new Avion("Airbus", 2);
-        
+
         a.imprimirFabricante();
         b.imprimirFabricante();
-        
+
         a.cambiarFabricante(b);
-        
+
         b.imprimirFabricante();
-       
+
         System.out.println();
     }
-    
+
     public static void exercise26(Scanner input) {
         /*
             Restaurante y pedidos.
          */
         System.out.println("Ejercicio 26");
+        Restaurante r = new Restaurante();
 
-       
+        r.mostrarMenú();
+        r.nuevoPostre("", 0);
+
+        int valorPedido1 = r.realizarPedido("Albóndigas con puré de papa", "Jugo de mango");
+        int valorPedido2 = r.realizarPedido("Albóndigas con puré de papa", "Pasta con pollo en salsa de champiñones", "Café frío");
+        int valorPedido3 = r.realizarPedido("Albóndigas con puré de papa", "Pasta con pollo en salsa de champiñones", "Jugo de mango", "Leche Asada");
+
+        System.out.println("El primer pedido (un plato y una bebida) cuesta: $" + valorPedido1);
+        System.out.println("El segundo pedido (dos platos y una bebida) cuesta: $" + valorPedido2);
+        System.out.println("El tercer pedido (dos platos, una bebida y un postre) cuesta: $" + valorPedido3);
+
+        System.out.println();
+    }
+
+    public static void exercise27(Scanner input) {
+        /*
+            Taxonomía animal.
+         */
+        System.out.println("Ejercicio 27");
+        Animal[] animals = new Animal[4];
+
+        animals[0] = new Canido("ladrido", "carnívoro", "doméstico", "Canis lupus familiaris"); // Perro
+        animals[1] = new Canido("aullido", "carnívoro", "bosque", "Canis lupus"); // Lobo
+        animals[2] = new Felino("rugido", "carnívoro", "pradera", "Panthera leo"); // León
+        animals[3] = new Felino("maullido", "ratones", "doméstico", "Felis silvestris catus"); // Gato
+
+        for (Animal animal : animals) {
+            System.out.println("Nombre científico: " + animal.getNombreCientifico());
+            System.out.println("Sonido: " + animal.getSonido());
+            System.out.println("Alimentos: " + animal.getAlimento());
+            System.out.println("Hábitat: " + animal.getHabitat());
+            System.out.println();
+        }
+
         System.out.println();
     }
 }
